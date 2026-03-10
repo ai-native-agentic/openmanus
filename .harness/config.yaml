@@ -1,0 +1,32 @@
+project_name: "openmanus"
+include_paths:
+  - "app"
+  - "protocol"
+gates:
+  gate_a:
+    enabled: true
+    black_line_length: 100
+    ruff_select: ["E", "F", "I"]
+    mypy_enabled: false
+    mypy_strict: false
+  gate_b:
+    enabled: false
+    root_package: "app"
+    boundaries: []
+  gate_c:
+    enabled: false
+    max_function_length: 130
+    max_complexity: 23
+  gate_d:
+    enabled: false
+  gate_e:
+    enabled: false
+  gate_f:
+    enabled: false
+exclude_paths:
+  - "tests/"
+  - "venv/"
+  - ".venv/"
+  - "__pycache__/"
+  - ".pytest_cache/"
+  - ".git/"
