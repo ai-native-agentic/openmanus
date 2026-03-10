@@ -1,4 +1,14 @@
-# Global LLM configuration
+# =============================================================================
+# OpenManus Configuration Example
+# =============================================================================
+# This file contains ALL supported LLM provider configurations.
+# Uncomment the provider section you want to use and fill in your credentials.
+# Only ONE [llm] section should be active at a time.
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Provider: Anthropic (DEFAULT)
+# -----------------------------------------------------------------------------
 [llm]
 model = "claude-3-7-sonnet-20250219"       # The LLM model to use
 base_url = "https://api.anthropic.com/v1/" # API endpoint URL
@@ -6,7 +16,10 @@ api_key = "YOUR_API_KEY"                   # Your API key
 max_tokens = 8192                          # Maximum number of tokens in the response
 temperature = 0.0                          # Controls randomness
 
-# [llm] # Amazon Bedrock
+# -----------------------------------------------------------------------------
+# Provider: Amazon Bedrock
+# -----------------------------------------------------------------------------
+# [llm]
 # api_type = "aws"                                       # Required
 # model = "us.anthropic.claude-3-7-sonnet-20250219-v1:0" # Bedrock supported modelID
 # base_url = "bedrock-runtime.us-west-2.amazonaws.com"   # Not used now
@@ -14,32 +27,72 @@ temperature = 0.0                          # Controls randomness
 # temperature = 1.0
 # api_key = "bear"                                       # Required but not used for Bedrock
 
-# [llm] #AZURE OPENAI:
-# api_type= 'azure'
-# model = "YOUR_MODEL_NAME" #"gpt-4o-mini"
-# base_url = "{YOUR_AZURE_ENDPOINT.rstrip('/')}/openai/deployments/{AZURE_DEPLOYMENT_ID}"
-# api_key = "AZURE API KEY"
-# max_tokens = 8096
-# temperature = 0.0
-# api_version="AZURE API VERSION" #"2024-08-01-preview"
+# -----------------------------------------------------------------------------
+# Provider: Azure OpenAI
+# -----------------------------------------------------------------------------
+# [llm]
+# api_type = 'azure'
+# model = "gpt-4o-mini"                                                                   # The LLM model to use
+# base_url = "{YOUR_AZURE_ENDPOINT.rstrip('/')}/openai/deployments/{AZURE_DEPLOYMENT_ID}" # API endpoint URL
+# api_key = "YOUR_API_KEY"                                                                # Your API key
+# max_tokens = 8096                                                                       # Maximum number of tokens in the response
+# temperature = 0.0                                                                       # Controls randomness
+# api_version = "2024-08-01-preview"                                                      # Azure API version
 
-# [llm] #OLLAMA:
+# -----------------------------------------------------------------------------
+# Provider: Google Gemini
+# -----------------------------------------------------------------------------
+# [llm]
+# model = "gemini-2.0-flash"                                              # The LLM model to use
+# base_url = "https://generativelanguage.googleapis.com/v1beta/openai/"   # API endpoint URL
+# api_key = "YOUR_API_KEY"                                                # Your API key
+# max_tokens = 8096                                                       # Maximum number of tokens in the response
+# temperature = 0.0                                                       # Controls randomness
+
+# -----------------------------------------------------------------------------
+# Provider: Ollama (Local)
+# -----------------------------------------------------------------------------
+# [llm]
 # api_type = 'ollama'
-# model = "llama3.2"
-# base_url = "http://localhost:11434/v1"
-# api_key = "ollama"
-# max_tokens = 4096
-# temperature = 0.0
+# model = "llama3.2"                         # The LLM model to use
+# base_url = "http://localhost:11434/v1"     # API endpoint URL
+# api_key = "ollama"                         # Required but not used
+# max_tokens = 4096                          # Maximum number of tokens in the response
+# temperature = 0.0                          # Controls randomness
 
-# [llm] #Jiekou.AI:
+# -----------------------------------------------------------------------------
+# Provider: PPIO
+# -----------------------------------------------------------------------------
+# [llm]
+# api_type = 'ppio'
+# model = "deepseek/deepseek-v3-0324"                    # The LLM model to use
+# base_url = "https://api.ppinfra.com/v3/openai"         # API endpoint URL
+# api_key = "YOUR_PPIO_API_KEY"                          # Your API key
+# max_tokens = 16000                                     # Maximum number of tokens in the response
+# temperature = 0.0                                      # Controls randomness
+
+# -----------------------------------------------------------------------------
+# Provider: Jiekou.AI
+# -----------------------------------------------------------------------------
+# [llm]
 # api_type = 'jiekou'
-# model = "claude-sonnet-4-5-20250929"                               # The LLM model to use
-# base_url = "https://api.jiekou.ai/openai"                          # API endpoint URL
-# api_key = "your Jiekou.AI api key"                                 # Your API key
-# max_tokens = 64000                                                 # Maximum number of tokens in the response
-# temperature = 0.0                                                  # Controls randomness
+# model = "claude-sonnet-4-5-20250929"                   # The LLM model to use
+# base_url = "https://api.jiekou.ai/openai"              # API endpoint URL
+# api_key = "YOUR_JIEKOU_API_KEY"                        # Your API key
+# max_tokens = 64000                                     # Maximum number of tokens in the response
+# temperature = 0.0                                      # Controls randomness
 
-# Optional configuration for specific LLM models
+
+# =============================================================================
+# Vision Model Configuration
+# =============================================================================
+# Uncomment the vision config matching your chosen LLM provider above.
+# Only ONE [llm.vision] section should be active at a time.
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Vision: Anthropic (DEFAULT)
+# -----------------------------------------------------------------------------
 [llm.vision]
 model = "claude-3-7-sonnet-20250219"       # The vision model to use
 base_url = "https://api.anthropic.com/v1/" # API endpoint URL for vision model
@@ -47,67 +100,129 @@ api_key = "YOUR_API_KEY"                   # Your API key for vision model
 max_tokens = 8192                          # Maximum number of tokens in the response
 temperature = 0.0                          # Controls randomness for vision model
 
-# [llm.vision] #OLLAMA VISION:
+# -----------------------------------------------------------------------------
+# Vision: Azure OpenAI
+# -----------------------------------------------------------------------------
+# [llm.vision]
+# model = "gpt-4o"                                                                        # The vision model to use
+# base_url = "{YOUR_AZURE_ENDPOINT.rstrip('/')}/openai/deployments/{AZURE_DEPLOYMENT_ID}" # API endpoint URL
+# api_key = "YOUR_API_KEY"                                                                # Your API key
+# max_tokens = 8192                                                                       # Maximum number of tokens
+# temperature = 0.0                                                                       # Controls randomness
+
+# -----------------------------------------------------------------------------
+# Vision: Google Gemini
+# -----------------------------------------------------------------------------
+# [llm.vision]
+# model = "gemini-2.0-flash-exp"                                           # The vision model to use
+# base_url = "https://generativelanguage.googleapis.com/v1beta/openai/"    # API endpoint URL
+# api_key = "YOUR_API_KEY"                                                 # Your API key
+# max_tokens = 8192                                                        # Maximum number of tokens
+# temperature = 0.0                                                        # Controls randomness
+
+# -----------------------------------------------------------------------------
+# Vision: Ollama
+# -----------------------------------------------------------------------------
+# [llm.vision]
 # api_type = 'ollama'
-# model = "llama3.2-vision"
-# base_url = "http://localhost:11434/v1"
-# api_key = "ollama"
-# max_tokens = 4096
-# temperature = 0.0
+# model = "llama3.2-vision"                  # The vision model to use
+# base_url = "http://localhost:11434/v1"     # API endpoint URL
+# api_key = "ollama"                         # Required but not used
+# max_tokens = 4096                          # Maximum number of tokens
+# temperature = 0.0                          # Controls randomness
 
-# Optional configuration for specific browser configuration
+# -----------------------------------------------------------------------------
+# Vision: PPIO
+# -----------------------------------------------------------------------------
+# [llm.vision]
+# api_type = 'ppio'
+# model = "qwen/qwen2.5-vl-72b-instruct"                # The vision model to use
+# base_url = "https://api.ppinfra.com/v3/openai"         # API endpoint URL
+# api_key = "YOUR_PPIO_API_KEY"                          # Your API key
+# max_tokens = 96000                                     # Maximum number of tokens
+# temperature = 0.0                                      # Controls randomness
+
+# -----------------------------------------------------------------------------
+# Vision: Jiekou.AI
+# -----------------------------------------------------------------------------
+# [llm.vision]
+# api_type = 'jiekou'
+# model = "claude-sonnet-4-5-20250929"                   # The vision model to use
+# base_url = "https://api.jiekou.ai/openai"              # API endpoint URL
+# api_key = "YOUR_JIEKOU_API_KEY"                        # Your API key
+# max_tokens = 64000                                     # Maximum number of tokens
+# temperature = 0.0                                      # Controls randomness
+
+
+# =============================================================================
+# Browser Configuration
+# =============================================================================
+
 # [browser]
-# Whether to run browser in headless mode (default: false)
-#headless = false
-# Disable browser security features (default: true)
-#disable_security = true
-# Extra arguments to pass to the browser
-#extra_chromium_args = []
-# Path to a Chrome instance to use to connect to your normal browser
-# e.g. '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
-#chrome_instance_path = ""
-# Connect to a browser instance via WebSocket
-#wss_url = ""
-# Connect to a browser instance via CDP
-#cdp_url = ""
+# headless = false                     # Whether to run browser in headless mode (default: false)
+# disable_security = true              # Disable browser security features (default: true)
+# extra_chromium_args = []             # Extra arguments to pass to the browser
+# chrome_instance_path = ""            # Path to Chrome instance for normal browser
+# wss_url = ""                         # Connect to browser via WebSocket
+# cdp_url = ""                         # Connect to browser via CDP
 
-# Optional configuration, Proxy settings for the browser
 # [browser.proxy]
 # server = "http://proxy-server:port"
 # username = "proxy-username"
 # password = "proxy-password"
 
-# Optional configuration, Search settings.
+
+# =============================================================================
+# Search Configuration
+# =============================================================================
+
 # [search]
-# Search engine for agent to use. Default is "Google", can be set to "Baidu" or "DuckDuckGo" or "Bing".
-#engine = "Google"
-# Fallback engine order. Default is ["DuckDuckGo", "Baidu", "Bing"] - will try in this order after primary engine fails.
-#fallback_engines = ["DuckDuckGo", "Baidu", "Bing"]
-# Seconds to wait before retrying all engines again when they all fail due to rate limits. Default is 60.
-#retry_delay = 60
-# Maximum number of times to retry all engines when all fail. Default is 3.
-#max_retries = 3
-# Language code for search results. Options: "en" (English), "zh" (Chinese), etc.
-#lang = "en"
-# Country code for search results. Options: "us" (United States), "cn" (China), etc.
-#country = "us"
+# engine = "Google"                                    # Default search engine ("Google", "Baidu", "DuckDuckGo", "Bing")
+# fallback_engines = ["DuckDuckGo", "Baidu", "Bing"]  # Fallback order after primary fails
+# retry_delay = 60                                     # Seconds before retrying all engines
+# max_retries = 3                                      # Max retry cycles
+# lang = "en"                                          # Language code for results
+# country = "us"                                       # Country code for results
 
 
-## Sandbox configuration
-#[sandbox]
-#use_sandbox = false
-#image = "python:3.12-slim"
-#work_dir = "/workspace"
-#memory_limit = "1g"  # 512m
-#cpu_limit = 2.0
-#timeout = 300
-#network_enabled = true
+# =============================================================================
+# Sandbox Configuration
+# =============================================================================
 
-# MCP (Model Context Protocol) configuration
+# [sandbox]
+# use_sandbox = false
+# image = "python:3.12-slim"
+# work_dir = "/workspace"
+# memory_limit = "1g"
+# cpu_limit = 2.0
+# timeout = 300
+# network_enabled = true
+
+
+# =============================================================================
+# Daytona Configuration
+# =============================================================================
+
+[daytona]
+daytona_api_key = ""
+# daytona_server_url = "https://app.daytona.io/api"
+# daytona_target = "us"                                                                       # Region: "us" or "eu"
+# sandbox_image_name = "whitezxj/sandbox:0.1.0"                                               # Sandbox Docker image
+# sandbox_entrypoint = "/usr/bin/supervisord -n -c /etc/supervisor/conf.d/supervisord.conf"    # Sandbox entrypoint
+# VNC_password =                                                                              # VNC login password (default: 123456)
+
+
+# =============================================================================
+# MCP (Model Context Protocol) Configuration
+# =============================================================================
+
 [mcp]
-server_reference = "app.mcp.server" # default server module reference
+server_reference = "app.mcp.server"  # Default server module reference
 
-# Optional Runflow configuration
-# Your can add additional agents into run-flow workflow to solve different-type tasks.
+
+# =============================================================================
+# Runflow Configuration
+# =============================================================================
+
 [runflow]
-use_data_analysis_agent = false     # The Data Analysi Agent to solve various data analysis tasks
+use_data_analysis_agent = false  # Enable Data Analysis Agent for data tasks
