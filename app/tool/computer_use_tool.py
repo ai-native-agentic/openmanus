@@ -11,7 +11,6 @@ from pydantic import Field
 from app.daytona.tool_base import Sandbox, SandboxToolsBase
 from app.tool.base import ToolResult
 
-
 KEYBOARD_KEYS = [
     "a",
     "b",

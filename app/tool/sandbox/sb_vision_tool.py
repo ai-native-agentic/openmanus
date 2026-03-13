@@ -4,12 +4,10 @@ import os
 from io import BytesIO
 from typing import Optional
 
-from PIL import Image
-from pydantic import Field
-
 from app.daytona.tool_base import Sandbox, SandboxToolsBase, ThreadMessage
 from app.tool.base import ToolResult
-
+from PIL import Image
+from pydantic import Field
 
 # 最大文件大小（原图10MB，压缩后5MB）
 MAX_IMAGE_SIZE = 10 * 1024 * 1024

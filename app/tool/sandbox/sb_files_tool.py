@@ -1,13 +1,11 @@
 import asyncio
 from typing import Optional, TypeVar
 
-from pydantic import Field
-
 from app.daytona.tool_base import Sandbox, SandboxToolsBase
 from app.tool.base import ToolResult
 from app.utils.files_utils import clean_path, should_exclude_file
 from app.utils.logger import logger
-
+from pydantic import Field
 
 Context = TypeVar("Context")
 
@@ -287,7 +285,7 @@ class SandboxFilesTool(SandboxToolsBase):
             end_line = replacement_line + self.SNIPPET_LINES + new_str.count("\n")
             snippet = "\n".join(new_content.split("\n")[start_line : end_line + 1])
 
-            message = f"Replacement successful."
+            message = "Replacement successful."
 
             return self.success_response(message)
 

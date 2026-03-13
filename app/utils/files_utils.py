@@ -1,6 +1,5 @@
 import os
 
-
 # Files to exclude from operations
 EXCLUDED_FILES = {
     ".DS_Store",

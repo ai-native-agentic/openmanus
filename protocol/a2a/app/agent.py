@@ -1,8 +1,7 @@
 from typing import Any, AsyncIterable, ClassVar, Dict, List, Literal
 
-from pydantic import BaseModel
-
 from app.agent.manus import Manus
+from pydantic import BaseModel
 
 
 class ResponseFormat(BaseModel):

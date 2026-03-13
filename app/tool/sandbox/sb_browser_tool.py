@@ -4,9 +4,6 @@ import json
 import traceback
 from typing import Optional  # Add this import for Optional
 
-from PIL import Image
-from pydantic import Field
-
 from app.daytona.tool_base import (  # Ensure Sandbox is imported correctly
     Sandbox,
     SandboxToolsBase,
@@ -14,7 +11,8 @@ from app.daytona.tool_base import (  # Ensure Sandbox is imported correctly
 )
 from app.tool.base import ToolResult
 from app.utils.logger import logger
-
+from PIL import Image
+from pydantic import Field
 
 # Context = TypeVar("Context")
 _BROWSER_DESCRIPTION = """\

@@ -1,5 +1,7 @@
 import time
 
+from app.config import config
+from app.utils.logger import logger
 from daytona import (
     CreateSandboxFromImageParams,
     Daytona,
@@ -9,10 +11,6 @@ from daytona import (
     SandboxState,
     SessionExecuteRequest,
 )
-
-from app.config import config
-from app.utils.logger import logger
-
 
 # load_dotenv()
 daytona_settings = config.daytona
@@ -143,7 +141,7 @@ def create_sandbox(password: str, project_id: str = None):
     # Start supervisord in a session for new sandbox
     start_supervisord_session(sandbox)
 
-    logger.info(f"Sandbox environment successfully initialized")
+    logger.info("Sandbox environment successfully initialized")
     return sandbox
 
 

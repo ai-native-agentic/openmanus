@@ -7,7 +7,6 @@ from app.daytona.tool_base import Sandbox, SandboxToolsBase
 from app.tool.base import ToolResult
 from app.utils.logger import logger
 
-
 Context = TypeVar("Context")
 _SHELL_DESCRIPTION = """\
 Execute a shell command in the workspace directory.
@@ -251,7 +250,7 @@ class SandboxShellTool(SandboxToolsBase):
                     await self._execute_raw_command(
                         f"tmux kill-session -t {session_name}"
                     )
-                except:
+                except (OSError, IOError, RuntimeError):
                     pass
             return self.fail_response(f"Error executing command: {str(e)}")
 

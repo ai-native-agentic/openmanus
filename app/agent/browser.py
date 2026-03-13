@@ -10,7 +10,6 @@ from app.schema import Message, ToolChoice
 from app.tool import BrowserUseTool, Terminate, ToolCollection
 from app.tool.sandbox.sb_browser_tool import SandboxBrowserTool
 
-
 # Avoid circular import if BrowserAgent needs BrowserContextHelper
 if TYPE_CHECKING:
     from app.agent.base import BaseAgent  # Or wherever memory is defined
