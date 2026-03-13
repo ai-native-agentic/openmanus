@@ -10,4 +10,12 @@ COPY . .
 
 RUN uv pip install --system -r requirements.txt
 
+# Create non-root user
+RUN addgroup --system appgroup && adduser --system --ingroup appgroup appuser
+
+# Change ownership of app directory
+RUN chown -R appuser:appgroup /app
+
+USER appuser
+
 CMD ["bash"]
