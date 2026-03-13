@@ -12,25 +12,30 @@ Stack: Python 3.12, asyncio, Anthropic SDK, MCP, Crawl4AI, Protocol Buffers
 
 ## STRUCTURE
 
-```
-.
-├── app/                     # Core agent framework
-│   ├── llm.py               # LLM provider abstraction
-│   ├── schema.py            # Data models (Message, Tool, Action)
-│   ├── prompt/              # System prompts (manus, planning, browser, SWE)
-│   ├── tool/                # Tool definitions (web search, crawl, planning)
-│   └── utils/               # Logger, file utilities
-├── protocol/                # Agent-to-agent (A2A) protocol
-│   └── a2a/                 # A2A implementation (agent executor)
-├── examples/                # Example workflows + benchmarks
-├── config/                  # YAML configuration (main.yaml)
-├── workspace/               # Agent workspace directory
-├── main.py                  # GUI agent entry point
-├── run_flow.py              # Flow-based execution
-├── run_mcp.py               # MCP client runner
-├── run_mcp_server.py        # MCP server launcher
-└── sandbox_main.py          # Sandboxed agent execution
-```
+openmanus/
+├── app/
+│   ├── agent/
+│   ├── daytona/
+│   ├── flow/
+│   ├── mcp/
+│   ├── prompt/
+│   ├── sandbox/
+│   ├── tool/
+│   ├── utils/
+├── assets/
+├── config/
+├── examples/
+│   ├── benchmarks/
+│   └── use_case/
+├── openmanus.egg-info/
+├── protocol/
+│   └── a2a/
+├── tests/
+│   └── sandbox/
+├── workspace/
+├── AGENTS.md
+├── README.md
+├── main.py
 
 ## WHERE TO LOOK
 
