@@ -50,6 +50,7 @@ async def test_create_sandbox(manager):
 
 
 @pytest.mark.asyncio
+@pytest.mark.timeout(120)
 async def test_max_sandboxes_limit(manager):
     """Tests maximum sandbox limit enforcement."""
     created_sandboxes = []

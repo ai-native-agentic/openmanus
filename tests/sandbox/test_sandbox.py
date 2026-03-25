@@ -105,6 +105,7 @@ print("Python is working!")
 
 
 @pytest.mark.asyncio
+@pytest.mark.timeout(120)
 async def test_sandbox_network_access(sandbox):
     """Tests sandbox network access."""
     if not sandbox.config.network_enabled:
